@@ -103,15 +103,8 @@ public abstract class BaseSkill : BaseSkillData
 	public virtual bool CheckRequirements(Unit unit, ScriptableObjectReference requiredVocation)
 	{
 		bool vocationRequirement = VocationRequirements(unit, requiredVocation);
-		
-		if(vocationRequirement)
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
+
+		return vocationRequirement;
 	}
 
 	/// <summary>
@@ -172,7 +165,9 @@ public abstract class BaseSkill : BaseSkillData
 				Debug.Log($"{unit.name} has met the requirements vocation requirement:{requiredVocationName}.");
 				return true;
 			}
-			continue;
+			// 'continue' just skips to the ending brace.  
+			// this is so unneeded the compiler probably even removes it
+			//continue;
 		}
 		return false;
 	}
